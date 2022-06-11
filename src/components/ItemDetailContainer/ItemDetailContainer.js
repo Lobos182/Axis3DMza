@@ -1,3 +1,4 @@
+import "./ItemDetailContainer.css"
 import { useEffect, useState } from "react"
 import { getProductsById } from "../../asyncmock"
 import ItemDetail from "../ItemDetail/ItemDetail"
@@ -12,18 +13,21 @@ const ItemDetailContainer = () => {
     useEffect(() => {
         getProductsById(productoId).then(res => {
             setProduct(res)
-        }).finally(()=>{
+        }).finally(() => {
             setLoading(false)
         })
     }, [productoId])
 
-    if(loading){
+    if (loading) {
         return <h1>Cargando...</h1>
     }
 
     return (
         <div className='ItemDetailContainer'>
-            <ItemDetail {...product} />
+            <h2>Detalle producto</h2>
+            <div className="row">
+                <ItemDetail {...product} />
+            </div>
         </div>
     )
 }

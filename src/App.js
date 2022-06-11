@@ -20,7 +20,7 @@ const App = () => {
         <BrowserRouter>
           <NavBar />
           <Routes>
-            <Route path='/' element={<ItemListContainer greeting="Bienvenidos Axis3DMendoza mi E-commerse" />} />
+            <Route path='/' element={<ItemListContainer greeting="Bienvenidos a Axis3DMendoza" />} />
             <Route path='/categoria/:categoriaId' element={<ItemListContainer greeting="Productos Filtrados" />} />
             <Route path='/detalle/:productoId' element={<ItemDetailContainer />} />
             <Route path='/about' element={<h1>Nosotros</h1>} />

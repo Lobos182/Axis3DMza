@@ -18,26 +18,29 @@ const ItemListContainer = ({ greeting }) => {
     if (!categoriaId) {
       getProducts().then(response => {
         setProducts(response)
-      }).finally(()=>{
-        setLoading(false)})
+      }).finally(() => {
+        setLoading(false)
+      })
     } else {
       getProductsByCategory(categoriaId).then(response => {
         setProducts(response)
-      }).finally(()=>{
-        setLoading(false)})
+      }).finally(() => {
+        setLoading(false)
+      })
     }
 
   }, [categoriaId])
 
-  if(loading){
-    return <h1>Cargando........</h1>
-}
+  if (loading) {
+    return <div class="spinner"></div>
+  }
 
   return (
     <div className='ItemListContainer'>
       <h1>{greeting}</h1>
-      <ItemList products={products} />
-
+      <div className="row">
+        <ItemList products={products} />
+      </div>
     </div>
   )
 }
