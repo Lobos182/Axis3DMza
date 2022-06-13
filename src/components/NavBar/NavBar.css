@@ -10,8 +10,10 @@
   flex-wrap: wrap; /*Allows the children inside a flex container to wrap down onto the next line if there is not enough space.*/
   align-items: center; /*Centers the children of a flex container vertically.*/
   justify-content: space-between; /*Adds space between each child of a flex container.*/
-  background-color: #fff;
+  background-color: #CCC5B9;
   padding-block: 15px; /*Padding top and bottom*/
+  
+  
 }
 .navbar a{
   text-decoration: none;
@@ -27,22 +29,23 @@ font-family:'Hammersmith One', sans-serif;
 .list{
   list-style: none;
   display: flex;
-  gap: 25px; /*Applies right and bottom spacing between children inside a flex or grid container.*/
+  gap: 50px; /*Applies right and bottom spacing between children inside a flex or grid container.*/
 }
 #toggler,
 .navbar label{
   display: none;/*Hide the checkbox and label on large screens.*/
 }
+
 /*Breakpoint set at 600px, once it is 600px or smaller the layout changes to use the following styles overriding the old ones.*/
 @media screen and 
-(max-width: 800px){
+(max-width: 924px){
   .titulo{
     font-size: small;
   }
 
 }
 @media screen and 
-(max-width: 611px){
+(max-width: 801px){
   .menu{
       width: 100%;
       max-height: 0; /*Makes the max-height 0 to side the expanded menu.*/
