@@ -5,8 +5,8 @@ import "./Cart.css"
 
 const Cart = () => {
 
-    const { cart, removeItem, removeAllItem } = useContext(CartContext)
-
+    const { cart, removeItem, removeAllItem,totalCompra } = useContext(CartContext)
+    
     useEffect(() => {
         document.querySelectorAll('.button').forEach(button => button.addEventListener('click', e => {
             if (!button.classList.contains('delete')) {
@@ -24,7 +24,7 @@ const Cart = () => {
             {cart.length === 0 ?
                 <><h1>Carrito Vacio</h1><div>
                     <Link className='Link' to="/">
-                    <button className='finaliza'>Ir a Productos</button>
+                        <button className='finaliza'>Ir a Productos</button>
                     </Link>
                 </div></>
 
@@ -70,10 +70,28 @@ const Cart = () => {
                                         </section>
                                         </th>
                                     </tr>
+
                                 </tbody>
+
                             )
                         }
                         )}
+                        <tfoot>
+                            <tr>
+                                <th>
+
+                                </th>
+                                <th>
+
+                                </th>
+                                <th>
+                                    Total
+                                </th>
+                                <th>
+                                   $ {totalCompra}
+                                </th>
+                            </tr>
+                        </tfoot>
                     </table><div>
                         <button className='finaliza'>Finalizar compra</button>
                     </div></>}
