@@ -23,7 +23,7 @@ const NavBar = (props) => {
                 </Link>
                 <h2 className='titulo'>Axis 3D Mendoza</h2>
                 <input type="checkbox" id="toggler" className="hamburger" />
-                <label for="toggler"><i className="ri-menu-line"></i></label>
+                <label htmlFor="toggler"><i className="ri-menu-line"></i></label>
                 <div className="menu">
                     <ul className="list">
                         <li><a href="#!">Nosotros</a></li>

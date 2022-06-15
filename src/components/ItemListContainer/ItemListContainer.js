@@ -1,8 +1,10 @@
 import './ItemListContainer.css'
 import { useState, useEffect } from 'react'
-import { getProducts, getProductsByCategory } from '../../asyncmock'
 import ItemList from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom'
+import { getDocs, collection, query, where } from 'firebase/firestore'
+import { db } from '../../services/firebase'
+
 
 
 const ItemListContainer = ({ greeting }) => {
@@ -15,24 +17,28 @@ const ItemListContainer = ({ greeting }) => {
 
 
   useEffect(() => {
-    if (!categoriaId) {
-      getProducts().then(response => {
-        setProducts(response)
-      }).finally(() => {
-        setLoading(false)
-      })
-    } else {
-      getProductsByCategory(categoriaId).then(response => {
-        setProducts(response)
-      }).finally(() => {
-        setLoading(false)
-      })
-    }
 
+    setLoading(true)
+    const collectionRef = categoriaId
+      ? query(collection(db, 'products'), where('categoria', '==', categoriaId))
+      : collection(db, 'products')
+
+    getDocs(collectionRef).then(response => {
+
+      const products = response.docs.map(doc => {
+        return { id: doc.id, ...doc.data() }
+      })
+
+      setProducts(products)
+    }).catch(error => {
+      console.log(error)
+    }).finally(() => {
+      setLoading(false)
+    })
   }, [categoriaId])
 
   if (loading) {
-    return <div class="spinner"></div>
+    return <div className="spinner"></div>
   }
 
   return (
