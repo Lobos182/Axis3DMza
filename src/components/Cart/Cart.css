@@ -101,7 +101,7 @@ th:last-of-type {
     box-shadow: 0 var(--shadow-y, 4px) var(--shadow-blur, 8px) var(--shadow);  
     transform: scale(var(--scale, 1));  
     transition: transform 0.3s, box-shadow 0.3s, background 0.3s;  
-    margin: 20px auto;
+    /* margin: 20px auto; */
       
 }  
 .button span {  

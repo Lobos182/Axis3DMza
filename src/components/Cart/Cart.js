@@ -2,11 +2,14 @@ import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import CartContext from '../../context/CartContext'
 import "./Cart.css"
+import { addDoc, collection } from 'firebase/firestore';
+import { db, collectionName } from '../../services/firebase';
 
 const Cart = () => {
 
-    const { cart, removeItem, removeAllItem,totalCompra } = useContext(CartContext)
-    
+    const { cart, removeItem, removeAllItem, totalCompra } = useContext(CartContext)
+
+
     useEffect(() => {
         document.querySelectorAll('.button').forEach(button => button.addEventListener('click', e => {
             if (!button.classList.contains('delete')) {
@@ -16,6 +19,26 @@ const Cart = () => {
             e.preventDefault();
         }));
     })
+
+    const crearOrden = () => {
+        console.log('crear orden')
+        const objOrden = {
+
+            comprador: {
+                nombre: 'Daniel Lobato',
+                email: 'lobos182@gmail.com',
+                telefono: '123456789'
+            },
+            items: cart,
+            total: totalCompra
+        }
+        console.log(objOrden)
+        const collectionRef = collection(db,collectionName.orders)
+
+        addDoc(collectionRef, objOrden).then(({ id }) => {
+            console.log(`se creo la orden con el id: ${id}`)
+        })
+    }
 
 
     return (
@@ -88,12 +111,12 @@ const Cart = () => {
                                     Total
                                 </th>
                                 <th>
-                                   $ {totalCompra}
+                                    $ {totalCompra}
                                 </th>
                             </tr>
                         </tfoot>
                     </table><div>
-                        <button className='finaliza'>Finalizar compra</button>
+                        <button className='finaliza' onClick={crearOrden}>Finalizar compra</button>
                     </div></>}
 
 
