@@ -12,6 +12,7 @@
 .cartContainer h1 {
     text-align: center;
     font-family: 'Iceberg', cursive;
+    color: #EB5E28;
 }
 .finaliza{    
     display: flex;
@@ -29,6 +30,24 @@
 .finaliza:active{
     transform: translateY(8px) translateX(8px);
     box-shadow: #252422 0px 0px 0px;
+}
+.divform,label{  
+    width: 100%;  
+    font-size: 20px;
+    color: white;    
+    display: block;
+    text-align: center;
+
+}
+.form{
+width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+
 }
 table {
     margin: auto;
@@ -101,7 +120,7 @@ th:last-of-type {
     box-shadow: 0 var(--shadow-y, 4px) var(--shadow-blur, 8px) var(--shadow);  
     transform: scale(var(--scale, 1));  
     transition: transform 0.3s, box-shadow 0.3s, background 0.3s;  
-    /* margin: 20px auto; */
+    margin: 20px auto;
       
 }  
 .button span {  

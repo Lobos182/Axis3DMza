@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Iceberg&display=swap');
+
+.cartContainer {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 12px;
+}
+.Link{
+    text-decoration: none;
+}
+
+.cartContainer h1 {
+    text-align: center;
+    font-family: 'Iceberg', cursive;
+    color: #EB5E28;
+}
+.finaliza{    
+    display: flex;
+    font-size: 25px;
+    font-family:'Iceberg', cursive;
+    border: none;
+    color: #FFFCF2;
+    background-color: #EB5E28;
+    box-shadow: #252422 8px 8px 0px;
+    border-radius: 8px;
+    transition: transform 200ms, box-shadow 00ms;
+    margin: 30px auto;
+    padding: 20px;
+}
+.finaliza:active{
+    transform: translateY(8px) translateX(8px);
+    box-shadow: #252422 0px 0px 0px;
+}
