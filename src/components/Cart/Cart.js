@@ -1,26 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import CartContext from '../../context/CartContext'
 import "./Cart.css"
-import {
-    addDoc, collection, getDocs, query, where, documentId, writeBatch
-} from 'firebase/firestore';
-import { db, collectionName } from '../../services/firebase';
-import FormContent from '../FormContent/FormContent';
-
 
 const Cart = () => {
-
-    const [loading, setLoading] = useState(false)
-    const { cart, removeItem, removeAllItem, totalCompra } = useContext(CartContext)
-    const [comprador, setComprador] = useState({
-        nombre: '',
-        email: '',
-        telefono: '',
-        Direccion: '',
-        Comentario: ''
-    })
-
+    
+    const { cart, removeItem, removeAllItem, totalCompra } = useContext(CartContext)   
 
     useEffect(() => {
         document.querySelectorAll('.button').forEach(button => button.addEventListener('click', e => {
@@ -32,59 +17,7 @@ const Cart = () => {
         }));
     })
 
-    const crearOrden = () => {
-        setLoading(true)
-        const objOrden = {
-            comprador,
-            items: cart,
-            total: totalCompra
-        }
-
-        const ids = cart.map(prod => prod.id)
-        const batch = writeBatch(db)
-        const sinStock = []
-        const collectionRef = collection(db, collectionName.products)
-
-        getDocs(query(collectionRef, where(documentId(), 'in', ids)))
-            .then(response => {
-                response.docs.forEach(doc => {
-                    const dataDoc = doc.data()
-
-                    const prodCount = cart.find(prod => prod.id === doc.id)?.count
-
-                    if (dataDoc.stock >= prodCount) {
-                        batch.update(doc.ref, { stock: dataDoc.stock - prodCount })
-
-                    } else {
-                        sinStock.push({ id: doc.id, ...dataDoc })
-                    }
-
-                })
-            }).then(() => {
-                if (sinStock.length === 0) {
-                    const collectionRef = collection(db, collectionName.orders)
-
-                    return addDoc(collectionRef, objOrden)
-                } else {
-                    return Promise.reject({ type: 'out_of_stock', products: sinStock })
-                }
-            }).then(({ id }) => {
-                batch.commit()
-                console.log(`El id de la orden es: ${id}`)
-                removeAllItem()
-            }).catch(error => {
-                if (error.type === 'out_of_stock') {
-                    console.log(`Del ${sinStock.map(prod => prod.nombre)} solo quedan : ${sinStock.map(prod => prod.stock)}`)
-                }
-            }).finally(() => {
-                setLoading(false)
-            })
-    }
-
-    if (loading) {
-        return <h1>Generando Orden</h1>
-    }
-
+       
     return (
 
         <div className='cartContainer'>
@@ -159,24 +92,12 @@ const Cart = () => {
                         </tfoot>
                     </table><div>
 
-                        <FormContent />
-                        <button className='finaliza' onClick={crearOrden}>Finalizar compra</button>
-
+                        
+                        <Link className='Link' to='/pago'>                        
+                        <button className='finaliza'>Ir a Pagos</button>
+                        </Link>
                     </div>
-                    <div className='divform'>
-                        <form>
-                            <label htmlFor="fname">nombre</label>
-                            <input className='form' placeholder='nombre' id='fname' dValue={comprador.nombre} onChange={(e) => setComprador({ ...comprador, nombre: e.target.value })} />
-                            <label htmlFor="femail">email</label>
-                            <input className='form' placeholder='email' id='femail' Value={comprador.email} onChange={(e) => setComprador({ ...comprador, email: e.target.value })} />
-                            <label htmlFor="ftelefono">telefono</label>
-                            <input className='form' placeholder='telefono' id='ftelefono' Value={comprador.telefono} onChange={(e) => setComprador({ ...comprador, telefono: e.target.value })} />
-                            <label htmlFor="fDireccion">Direccion</label>
-                            <input className='form' placeholder='Direccion' id='fDireccion' Value={comprador.Direccion} onChange={(e) => setComprador({ ...comprador, Direccion: e.target.value })} />
-                            <label htmlFor="fComentario">Comentario</label>
-                            <input className='form' placeholder='Comentario' id='fComentario' Value={comprador.Comentario} onChange={(e) => setComprador({ ...comprador, Comentario: e.target.value })} />
-                        </form>
-                    </div></>}
+                   </>}
 
 
         </div >

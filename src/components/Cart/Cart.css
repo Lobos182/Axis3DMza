@@ -25,7 +25,7 @@
     border-radius: 8px;
     transition: transform 200ms, box-shadow 00ms;
     margin: 30px auto;
-    padding: 20px;
+    padding: 20px;    
 }
 .finaliza:active{
     transform: translateY(8px) translateX(8px);
@@ -49,6 +49,7 @@ width: 50%;
   box-sizing: border-box;
 
 }
+
 table {
     margin: auto;
     padding: 10px 5px;
