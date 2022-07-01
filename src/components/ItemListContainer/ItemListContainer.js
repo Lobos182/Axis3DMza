@@ -1,51 +1,25 @@
 import './ItemListContainer.css'
-import { useState, useEffect } from 'react'
 import ItemList from '../ItemList/ItemList'
+import { useFirestore } from '../../hooks/useFirestore'
 import { useParams } from 'react-router-dom'
-import { getDocs, collection, query, where } from 'firebase/firestore'
-import { db } from '../../services/firebase'
+import { getProductsByCategory } from '../../services/firebase/firestore'
 
-
-
-const ItemListContainer = ({ greeting }) => {
-
-  const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(true)
-
+const ItemListContainer = ({ greeting }) => {  
   const { categoriaId } = useParams()
+  const { isLoading, data, error } = useFirestore(() => getProductsByCategory(categoriaId), [categoriaId])
 
-
-
-  useEffect(() => {
-
-    setLoading(true)
-    const collectionRef = categoriaId
-      ? query(collection(db, 'products'), where('categoria', '==', categoriaId))
-      : collection(db, 'products')
-
-    getDocs(collectionRef).then(response => {
-
-      const products = response.docs.map(doc => {
-        return { id: doc.id, ...doc.data() }
-      })
-
-      setProducts(products)
-    }).catch(error => {
-      console.log(error)
-    }).finally(() => {
-      setLoading(false)
-    })
-  }, [categoriaId])
-
-  if (loading) {
+  if (isLoading) {
     return <div className="spinner"></div>
+  }
+  if (error) {
+    return <h1>Ha ocurrido un Error</h1>
   }
 
   return (
     <div className='ItemListContainer'>
       <h1>{greeting}</h1>
       <div className="row">
-        <ItemList products={products} />
+        <ItemList products={data} />
       </div>
     </div>
   )

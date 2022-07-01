@@ -1,12 +1,13 @@
-import React, { useContext,  useState } from 'react'
+import React, { useContext, useState } from 'react'
 import CartContext from '../../context/CartContext'
-import "./FormContent.css" 
+import "./FormContent.css"
 import {
   addDoc, collection, getDocs, query, where, documentId, writeBatch
 } from 'firebase/firestore';
 import { db, collectionName } from '../../services/firebase';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+// import { getCarritoCompra } from '../../services/firebase/firestore';
 
 
 const FormContent = () => {
@@ -34,7 +35,9 @@ const FormContent = () => {
       items: cart,
       total: totalCompra
     }
+    // getCarritoCompra(cart,objOrden).then(response=>{
 
+    // })
     const ids = cart.map(prod => prod.id)
     const batch = writeBatch(db)
     const sinStock = []
@@ -80,7 +83,7 @@ const FormContent = () => {
             text: "",
             icon: "error",
           });
-          navigate('/cart')          
+          navigate('/cart')
         }
       }).finally(() => {
         setLoading(false)
@@ -90,7 +93,7 @@ const FormContent = () => {
   if (loading) {
     return <h1>Generando Orden</h1>
   }
-  
+
 
   return (
     <div className='divform'>
@@ -99,23 +102,23 @@ const FormContent = () => {
       <p>----------------------------------------------------------------------</p>
       <form>
         <label htmlFor="fname">nombre</label>
-        <input className='form' placeholder='nombre' id='fname' Value={comprador.nombre} on onChange={(e) => {setComprador({ ...comprador, nombre: e.target.value });handleTextChange()}} />
+        <input className='form' placeholder='nombre' id='fname' Value={comprador.nombre} on onChange={(e) => { setComprador({ ...comprador, nombre: e.target.value }); handleTextChange() }} />
         <label htmlFor="femail">email</label>
-        <input className='form' placeholder='email' id='femail' Value={comprador.email} onChange={(e) => {setComprador({ ...comprador, email: e.target.value });handleTextChange()}} />
+        <input className='form' placeholder='email' id='femail' Value={comprador.email} onChange={(e) => { setComprador({ ...comprador, email: e.target.value }); handleTextChange() }} />
         <label htmlFor="ftelefono">telefono</label>
-        <input className='form' placeholder='telefono' id='ftelefono' Value={comprador.telefono} onChange={(e) => {setComprador({ ...comprador, telefono: e.target.value });handleTextChange()}} />
+        <input className='form' placeholder='telefono' id='ftelefono' Value={comprador.telefono} onChange={(e) => { setComprador({ ...comprador, telefono: e.target.value }); handleTextChange() }} />
         <label htmlFor="fDireccion">Direccion</label>
-        <input className='form' placeholder='Direccion' id='fDireccion' Value={comprador.Direccion} onChange={(e) => {setComprador({ ...comprador, Direccion: e.target.value });handleTextChange()}} />
+        <input className='form' placeholder='Direccion' id='fDireccion' Value={comprador.Direccion} onChange={(e) => { setComprador({ ...comprador, Direccion: e.target.value }); handleTextChange() }} />
         <label htmlFor="fComentario">Comentario</label>
-        <input className='form' placeholder='Comentario' id='fComentario' Value={comprador.Comentario} onChange={(e) => {setComprador({ ...comprador, Comentario: e.target.value });handleTextChange()}} />
+        <input className='form' placeholder='Comentario' id='fComentario' Value={comprador.Comentario} onChange={(e) => { setComprador({ ...comprador, Comentario: e.target.value }); handleTextChange() }} />
       </form>
       <div>
-        <button className='finaliza' disabled={!text} onClick={crearOrden}>Finalizar compra</button>        
+        <button className='finaliza' disabled={!text} onClick={crearOrden}>Finalizar compra</button>
       </div>
 
 
-        </div>
-        )
-  }
+    </div>
+  )
+}
 
-        export default FormContent
+export default FormContent
