@@ -13,7 +13,7 @@ Tambien es necesario configurar una base de datos de Firebase.
 Clonar el proyecto
 
 ```bash
-  git clone https://github.com/almileo/ecommerce_tecnostore_almiron
+  git clone https://github.com/Lobos182/Axis3DMza
 ```
 
 Go to the project directory
