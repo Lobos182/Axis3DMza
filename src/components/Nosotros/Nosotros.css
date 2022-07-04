@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Iceberg&display=swap');
+
+.Contenedor {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 12px;
+}
+.Link{
+    text-decoration: none;
+}
+
+.Contenedor h1 {
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Iceberg', cursive;
+    color: #EB5E28;
+}
+.Contenedor p{
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Iceberg', cursive;
+    color: aliceblue;
+}
+.Contenedor a{    
+    font-size: 40px;
+    font-family: 'Iceberg', cursive;
+    text-decoration: none;
+}

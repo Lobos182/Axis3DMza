@@ -1,28 +1,49 @@
- 
-  /* Float four columns side by side */
-  .column {
-    float: left;
-    width: 25%;
-    padding: 10px 10px;
-  }  
-  
-  .imgCard{
-    width: 100%;
+@import url('https://fonts.googleapis.com/css2?family=Iceberg&display=swap');
+
+.containerItemDetail {
+  display: block;
 }
+
+.column {
+  width: 50%;
+  margin: auto;
+  padding: 20px 10px;
+}
+
+.imgCard {
+  width: 100%;
+}
+.botonCompra{    
+  border: 1px solid #2e518b; /*anchura, estilo y color borde*/
+  padding: 10px; /*espacio alrededor texto*/
+  background-color: #2e518b; /*color botón*/
+  color: #ffffff; /*color texto*/
+  text-decoration: none; /*decoración texto*/
+  text-transform: uppercase; /*capitalización texto*/
+  font-family: 'Helvetica', sans-serif; /*tipografía texto*/
+  border-radius: 50px; /*bordes redondos*/
   
-  /* Responsive columns */
-  @media screen and (max-width: 600px) {
-    .column {
-      width: 100%;
-      display: block;
-      margin-bottom: 20px;
-    }
+}
+
+.botonCompra:hover{
+background-color: black;
+color: antiquewhite;
+
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
   }
-  
-  /* Style the counter cards */
-  .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 16px;
-    text-align: center;
-    background-color: #f1f1f1;
-  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 #EB5E28;
+  padding: 16px;
+  text-align: center;
+  background-color: #CCC5B9;
+}

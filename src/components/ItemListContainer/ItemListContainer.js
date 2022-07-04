@@ -17,7 +17,11 @@ const ItemListContainer = ({ greeting }) => {
 
   return (
     <div className='ItemListContainer'>
-      <h1>{greeting}</h1>
+      <div className='contendorimg'>
+        <img src='/images/fondo.jpg' alt='Fondo'/>
+        <h1 className='centrado'>{greeting}</h1>
+      </div>
+      
       <div className="row">
         <ItemList products={data} />
       </div>

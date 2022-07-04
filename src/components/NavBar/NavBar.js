@@ -19,14 +19,15 @@ const NavBar = (props) => {
         <div>
             <nav className="navbar container">
             <Link className='logo' to='/' >
-                    <img src='./images/axis3d.jpg' width="100" height="auto" className="imgLogo" alt='logo' />
+                    <img src='/images/axis3d.jpg' width="100" height="auto" className="imgLogo" alt='logo' />
                 </Link>
-                <h2 className='titulo'>Axis 3D Mendoza</h2>
+                <Link className='logo' to='/' >
+                <h2 className='titulo'>Axis 3D Mendoza</h2></Link>
                 <input type="checkbox" id="toggler" className="hamburger" />
                 <label htmlFor="toggler"><i className="ri-menu-line"></i></label>
                 <div className="menu">
                     <ul className="list">
-                        <li><a href="#!">Nosotros</a></li>
+                        <li><Link className='Link' to='/about'>Nosotros</Link></li>
                         <li><Link className='Link' to='/categoria/animales'>Animales</Link></li>
                         <li><Link className='Link' to='/categoria/accesorios'>Accesorios</Link></li>
                         <li><Link className='Link' to='/categoria/figuras'>Figuras</Link></li>                        

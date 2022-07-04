@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Cart from './components/Cart/Cart';
 import { CartContextProvider } from './context/CartContext';
 import FormContent from './components/FormContent/FormContent';
+import Nosotros from './components/Nosotros/Nosotros';
 
 
 
@@ -24,7 +25,7 @@ const App = () => {
             <Route path='/' element={<ItemListContainer greeting="Bienvenidos a Axis3DMendoza" />} />
             <Route path='/categoria/:categoriaId' element={<ItemListContainer greeting="Productos Filtrados" />} />
             <Route path='/detalle/:productoId' element={<ItemDetailContainer />} />
-            <Route path='/about' element={<h1>Nosotros</h1>} />
+            <Route path='/about' element={<Nosotros />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/pago' element={<FormContent />} />
             <Route path='*' element={<h1>No se encuentra la Pagina</h1>} />
