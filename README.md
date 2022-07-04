@@ -28,5 +28,3 @@ Las Rutas de mi aplicación son:
 
 ![Logo](https://raw.githubusercontent.com/Lobos182/FinalJS2022/master/images/axis3d.jpg)
 
-(https://user-images.githubusercontent.com/97643619/177225732-11698ee9-6431-428c-9370-ce4034a52e64.mp4)
-
