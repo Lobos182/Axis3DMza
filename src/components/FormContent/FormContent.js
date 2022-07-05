@@ -13,12 +13,17 @@ import swal from 'sweetalert';
 const FormContent = () => {
   const [loading, setLoading] = useState(false)
   const { cart, removeAllItem, totalCompra } = useContext(CartContext)
-  const [text, enableButton] = useState("");
+
+
   const navigate = useNavigate()
 
-  const handleTextChange = (event) => {
-    enableButton("false");
-  };
+  const comprobarEmail = () => {
+    const email1 = document.f1.email1.value
+    const email2 = document.f1.email2.value
+    if (email1 !== email2) {
+      swal("Los Correo no son Iguales")
+    }
+  }
 
   const [comprador, setComprador] = useState({
     nombre: '',
@@ -99,24 +104,26 @@ const FormContent = () => {
     <div className='divform'>
       <h1>Finalizando Compra</h1>
       <p>Por favor Complete los siguientes datos para poder finalizar la compra</p>
+      <p>Los Datos con * son obligatorios</p>
       <p>----------------------------------------------------------------------</p>
-      <form>
-        <label htmlFor="fname">nombre</label>
-        <input className='form' placeholder='nombre' id='fname' Value={comprador.nombre} on onChange={(e) => { setComprador({ ...comprador, nombre: e.target.value }); handleTextChange() }} />
-        <label htmlFor="femail">email</label>
-        <input className='form' placeholder='email' id='femail' Value={comprador.email} onChange={(e) => { setComprador({ ...comprador, email: e.target.value }); handleTextChange() }} />
-        <label htmlFor="ftelefono">telefono</label>
-        <input className='form' placeholder='telefono' id='ftelefono' Value={comprador.telefono} onChange={(e) => { setComprador({ ...comprador, telefono: e.target.value }); handleTextChange() }} />
-        <label htmlFor="fDireccion">Direccion</label>
-        <input className='form' placeholder='Direccion' id='fDireccion' Value={comprador.Direccion} onChange={(e) => { setComprador({ ...comprador, Direccion: e.target.value }); handleTextChange() }} />
+      <form onSubmit={crearOrden} name="f1">
+        <label htmlFor="fname">Nombre *</label>
+        <input className='form' placeholder='nombre' required="required" id='fname' Value={comprador.nombre} onChange={(e) => setComprador({ ...comprador, nombre: e.target.value })} />
+        <label htmlFor="femail">Email *</label>
+        <input className='form' placeholder='email' name="email1" required="required" id='femail' Value={comprador.email} onChange={(e) => setComprador({ ...comprador, email: e.target.value })} />
+        <label htmlFor="femail2">Repetir Email *</label>
+        <input className='form' placeholder='email' name="email2" required="required" id='femail' />
+
+        <label htmlFor="ftelefono">Telefono *</label>
+        <input className='form' placeholder='telefono' onClick={comprobarEmail} required="required" id='ftelefono' Value={comprador.telefono} onChange={(e) => setComprador({ ...comprador, telefono: e.target.value })} />
+        <label htmlFor="fDireccion">Direccion *</label>
+        <input className='form' placeholder='Direccion' required="required" id='fDireccion' Value={comprador.Direccion} onChange={(e) => setComprador({ ...comprador, Direccion: e.target.value })} />
         <label htmlFor="fComentario">Comentario</label>
-        <input className='form' placeholder='Comentario' id='fComentario' Value={comprador.Comentario} onChange={(e) => { setComprador({ ...comprador, Comentario: e.target.value }); handleTextChange() }} />
+        <input className='form' placeholder='Comentario' id='fComentario' Value={comprador.Comentario} onChange={(e) => setComprador({ ...comprador, Comentario: e.target.value })} />
+        <label htmlFor="fTerminos">Acepta nuestros <a href='#!'> Terminos y Condiciones  </a>*
+          <input type='checkbox' required="required" /></label>
+        <input type='submit' className='finaliza' value='Finalizar compra' />
       </form>
-      <div>
-        <button className='finaliza' disabled={!text} onClick={crearOrden}>Finalizar compra</button>
-      </div>
-
-
     </div>
   )
 }
