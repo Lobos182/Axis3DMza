@@ -94,7 +94,7 @@ Las Rutas de mi aplicación son:
 
 ## Autor
 
-- [@Lobos182](https://github.com/Lobos182/Axis3DMza)
+- [@Lobos182](https://github.com/Lobos182)
 
 
 ![Logo](https://raw.githubusercontent.com/Lobos182/FinalJS2022/master/images/axis3d.jpg)
