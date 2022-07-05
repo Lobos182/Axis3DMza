@@ -86,6 +86,14 @@ Las Rutas de mi aplicación son:
 - Filtrados por categoria (/categoria/categoriaId) muestra segun la categoria de prodcuto elegida el listado de esos productos.
 - Filtrados por Id (/detalle/ProductId) este es el boton que esta en cada Card, el cual se llama detalle y al hacer click lleva a la pagina en la cual solo muestra el producto selsccionado con todos sus detalles.
 - Nosotros (/about) muestra la pagina sobre nosotros.
+
+## Built Using
+
+- [Create-React-App](https://create-react-app.dev/)
+- [Vercel](https://vercel.com)
+- [Firebase](https://firebase.com)
+- [Chakra UI](https://chakra-ui.com/)
+
 ## Autor
 
 - [@Lobos182](https://github.com/Lobos182/Axis3DMza)
