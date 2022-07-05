@@ -1,18 +1,14 @@
-// Import the functions you need from the SDKs you need
+
 import { initializeApp } from "firebase/app";
-import {getFirestore} from "firebase/firestore"
+import { getFirestore } from "firebase/firestore"
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC6cPVF3tSlCZbO3diNBpef69cdxk_biLY",
-  authDomain: "axis3dreact.firebaseapp.com",
-  projectId: "axis3dreact",
-  storageBucket: "axis3dreact.appspot.com",
-  messagingSenderId: "178238484556",
-  appId: "1:178238484556:web:f370fbd9b31b284a6dc4e9"
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId
 };
 
 // Initialize Firebase
@@ -20,4 +16,7 @@ const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app)
 
- 
+export const collectionName = {
+  products: 'products',
+  orders: 'ordenes'
+}

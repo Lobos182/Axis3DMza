@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+# E-commerce Axis3DMendoza
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto es un E-commerce, de venta de articulos impresos en 3D.
 
-## Available Scripts
 
-In the project directory, you can run:
+
+## Correrlo Localmente
+
+Si se quiere descargar el proyecto y probar local, una vez realizada la clonacion se debe ejecutar `npm install`, luego se puede hacer uso de los scripts disponibles.
+
+Tambien es necesario configurar una base de datos de Firebase.
+
+Clonar el proyecto
+
+```bash
+  git clone https://github.com/Lobos182/Axis3DMza
+```
+
+Go to the project directory
+
+```bash
+  cd my-project
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
+
+## Scripts Disponibles
+
+Se pueden ejecutar los siguientes scripts:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Con este comando se levanta la app en modo desarrollo.\
+Abre [http://localhost:3000](http://localhost:3000) en el navegador.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+La pagina se actualiza cada vez que se hace un cambio.\
+Tambien muestra errores en consola para poder debugear.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Para ejecutar test (no aplicado por el momento).\
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Para creaer la carpeta `build` y poder subirlo a produccion.\
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Mas informacion [deployment](https://facebook.github.io/create-react-app/docs/deployment).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Variables de Entorno
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Para poder correr este proyecto es necesario configurar las variables de entorno, la cuales son las credenciales de la base de datos Firebase
+Tambien hay un archivo de ejemplo .env.example
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+`REACT_APP_FIREBASE_apiKey`
 
-## Learn More
+`REACT_APP_FIREBASE_authDomain`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`REACT_APP_FIREBASE_projectId`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+`REACT_APP_FIREBASE_storageBucket`
 
-### Code Splitting
+`REACT_APP_FIREBASE_messagingSenderId`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+`REACT_APP_FIREBASE_appId`
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Demo
+[Axis-3d-Mendoza-copia.webm](https://user-images.githubusercontent.com/97643619/177225992-f34c2259-ca30-4ab5-88b5-433b58eb7d60.webm)
+    
+## Documentación 
+Las Rutas de mi aplicación son:
+- root (/): muestra el ItemListContainer el cual muestra el listado de todos los productos que tenemos en nuestra base de datos.
+- Filtrados por categoria (/categoria/categoriaId) muestra segun la categoria de prodcuto elegida el listado de esos productos.
+- Filtrados por Id (/detalle/ProductId) este es el boton que esta en cada Card, el cual se llama detalle y al hacer click lleva a la pagina en la cual solo muestra el producto selsccionado con todos sus detalles.
+- Nosotros (/about) muestra la pagina sobre nosotros.
 
-### Making a Progressive Web App
+## Creado Usando
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- [Create-React-App](https://create-react-app.dev/)
+- [Firebase](https://firebase.com)
 
-### Advanced Configuration
+## Autor
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- [@Lobos182](https://github.com/Lobos182)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![Logo](https://raw.githubusercontent.com/Lobos182/FinalJS2022/master/images/axis3d.jpg)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

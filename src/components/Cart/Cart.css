@@ -12,6 +12,7 @@
 .cartContainer h1 {
     text-align: center;
     font-family: 'Iceberg', cursive;
+    color: #EB5E28;
 }
 .finaliza{    
     display: flex;
@@ -24,12 +25,31 @@
     border-radius: 8px;
     transition: transform 200ms, box-shadow 00ms;
     margin: 30px auto;
-    padding: 20px;
+    padding: 20px;    
 }
 .finaliza:active{
     transform: translateY(8px) translateX(8px);
     box-shadow: #252422 0px 0px 0px;
 }
+.divform,label{  
+    width: 100%;  
+    font-size: 20px;
+    color: white;    
+    display: block;
+    text-align: center;
+
+}
+.form{
+width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+
+}
+
 table {
     margin: auto;
     padding: 10px 5px;

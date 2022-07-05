@@ -1,32 +1,25 @@
 import "./ItemDetailContainer.css"
-import { useEffect, useState } from "react"
-import { getProductsById } from "../../asyncmock"
 import ItemDetail from "../ItemDetail/ItemDetail"
 import { useParams } from "react-router-dom"
+import { getProduct } from "../../services/firebase/firestore"
+import { useFirestore } from "../../hooks/useFirestore"
 
-const ItemDetailContainer = () => {
-    const [product, setProduct] = useState()
-    const [loading, setLoading] = useState(true)
-
+const ItemDetailContainer = () => {    
     const { productoId } = useParams()
-
-    useEffect(() => {
-        getProductsById(productoId).then(res => {
-            setProduct(res)
-        }).finally(() => {
-            setLoading(false)
-        })
-    }, [productoId])
-
-    if (loading) {
+    const { isLoading, data, error } = useFirestore(() => getProduct(productoId), [productoId])
+   
+    if (isLoading) {
         return <h1>Cargando...</h1>
+    }
+    if (error) {
+        return <h1>Ah ocurrido un ERROR...</h1>
     }
 
     return (
         <div className='ItemDetailContainer'>
-            <h2>Detalle producto</h2>
+            <h2>Detalle producto: {data.nombre}</h2>
             <div className="row">
-                <ItemDetail {...product} />
+                <ItemDetail {...data} />
             </div>
         </div>
     )

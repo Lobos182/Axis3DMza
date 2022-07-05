@@ -1,45 +1,29 @@
 import './ItemListContainer.css'
-import { useState, useEffect } from 'react'
-import { getProducts, getProductsByCategory } from '../../asyncmock'
 import ItemList from '../ItemList/ItemList'
+import { useFirestore } from '../../hooks/useFirestore'
 import { useParams } from 'react-router-dom'
+import { getProductsByCategory } from '../../services/firebase/firestore'
 
-
-const ItemListContainer = ({ greeting }) => {
-
-  const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(true)
-
+const ItemListContainer = ({ greeting }) => {  
   const { categoriaId } = useParams()
+  const { isLoading, data, error } = useFirestore(() => getProductsByCategory(categoriaId), [categoriaId])
 
-
-
-  useEffect(() => {
-    if (!categoriaId) {
-      getProducts().then(response => {
-        setProducts(response)
-      }).finally(() => {
-        setLoading(false)
-      })
-    } else {
-      getProductsByCategory(categoriaId).then(response => {
-        setProducts(response)
-      }).finally(() => {
-        setLoading(false)
-      })
-    }
-
-  }, [categoriaId])
-
-  if (loading) {
-    return <div class="spinner"></div>
+  if (isLoading) {
+    return <div className="spinner"></div>
+  }
+  if (error) {
+    return <h1>Ha ocurrido un Error</h1>
   }
 
   return (
     <div className='ItemListContainer'>
-      <h1>{greeting}</h1>
+      <div className='contendorimg'>
+        <img src='/images/fondo.jpg' alt='Fondo'/>
+        <h1 className='centrado'>{greeting}</h1>
+      </div>
+      
       <div className="row">
-        <ItemList products={products} />
+        <ItemList products={data} />
       </div>
     </div>
   )

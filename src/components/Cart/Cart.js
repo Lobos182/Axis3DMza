@@ -4,8 +4,8 @@ import CartContext from '../../context/CartContext'
 import "./Cart.css"
 
 const Cart = () => {
-
-    const { cart, removeItem, removeAllItem } = useContext(CartContext)
+    
+    const { cart, removeItem, removeAllItem, totalCompra } = useContext(CartContext)   
 
     useEffect(() => {
         document.querySelectorAll('.button').forEach(button => button.addEventListener('click', e => {
@@ -17,18 +17,16 @@ const Cart = () => {
         }));
     })
 
-
+       
     return (
 
         <div className='cartContainer'>
             {cart.length === 0 ?
-                <><h1>Carrito Vacio</h1><div>
+                <><h1>Carrito Vacio <br></br> Ups.. no hay nada aca, puedes ir a ver nuestros </h1><div>
                     <Link className='Link' to="/">
-                    <button className='finaliza'>Ir a Productos</button>
+                        <button className='finaliza'>Productos</button>
                     </Link>
                 </div></>
-
-
                 :
                 <><h1>Carrito</h1><button class="button" onClick={removeAllItem}>
                     <div class="trash">
@@ -70,13 +68,36 @@ const Cart = () => {
                                         </section>
                                         </th>
                                     </tr>
+
                                 </tbody>
+
                             )
                         }
                         )}
+                        <tfoot>
+                            <tr>
+                                <th>
+
+                                </th>
+                                <th>
+
+                                </th>
+                                <th>
+                                    Total
+                                </th>
+                                <th>
+                                    $ {totalCompra}
+                                </th>
+                            </tr>
+                        </tfoot>
                     </table><div>
-                        <button className='finaliza'>Finalizar compra</button>
-                    </div></>}
+
+                        
+                        <Link className='Link' to='/pago'>                        
+                        <button className='finaliza'>Ir a Pagos</button>
+                        </Link>
+                    </div>
+                   </>}
 
 
         </div >
