@@ -90,9 +90,7 @@ Las Rutas de mi aplicación son:
 ## Built Using
 
 - [Create-React-App](https://create-react-app.dev/)
-- [Vercel](https://vercel.com)
 - [Firebase](https://firebase.com)
-- [Chakra UI](https://chakra-ui.com/)
 
 ## Autor
 
