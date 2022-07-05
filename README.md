@@ -87,7 +87,7 @@ Las Rutas de mi aplicación son:
 - Filtrados por Id (/detalle/ProductId) este es el boton que esta en cada Card, el cual se llama detalle y al hacer click lleva a la pagina en la cual solo muestra el producto selsccionado con todos sus detalles.
 - Nosotros (/about) muestra la pagina sobre nosotros.
 
-## Built Using
+## Creado Usando
 
 - [Create-React-App](https://create-react-app.dev/)
 - [Firebase](https://firebase.com)
