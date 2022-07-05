@@ -61,7 +61,7 @@ Mas informacion [deployment](https://facebook.github.io/create-react-app/docs/de
 ## Variables de Entorno
 
 Para poder correr este proyecto es necesario configurar las variables de entorno, la cuales son las credenciales de la base de datos Firebase
-Tambien hay un archivo de ejemplo .env.example
+Tambien hay un archivo de ejemplo [.env.example](https://github.com/Lobos182/Axis3DMza/blob/master/.env.example)
 
 
 `REACT_APP_FIREBASE_apiKey`
